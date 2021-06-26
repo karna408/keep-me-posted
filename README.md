@@ -32,6 +32,7 @@ The application demonstrates how to deploy to Heroku from CircleCI 2.0. Please c
 
 ```
 createdb circulate
+python -m pip install --upgrade pip setuptools wheel
 pip install -r requirements/dev.txt
 python manage.py deploy
 python manage.py runserver
