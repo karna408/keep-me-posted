@@ -8,11 +8,9 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-strategy:
-  matrix:
-    Python35:
-      PYTHON_VERSION: '3.5'
-  maxParallel: 1
+
+variables:
+  PYTHON_VERSION: '3.5'
 
 steps:
 - task: UsePythonVersion@0
