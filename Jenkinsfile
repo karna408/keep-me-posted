@@ -24,7 +24,7 @@ pipeline {
                 sh 'echo "Activating virtualenv"'
                 sh '. venv/bin/activate'
 */
-                sh  'apt install -y python3-pip'
+                sh  'apt install -y python3-pip libpq-dev'
                 sh 'echo "Installing dependenices"'                      
                 sh 'pip3 install -r requirements/dev.txt'
             }
