@@ -6,7 +6,7 @@ pipeline {
                 docker {
                     image 'circleci/python:3.6.2-stretch-browsers'
                     // args '-e FLASK_CONFIG=testing -e TEST_DATABASE_URL=postgresql://ubuntu@localhost/circle_test?sslmode=disable -v $HOME:/'
-                    args '-v $HOME:/'
+                    args '-v $HOME/workspace/t-app_*:/home/circleci/'
                     reuseNode true
                 }
             }
