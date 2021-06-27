@@ -19,7 +19,7 @@ pipeline {
 
                             sh 'echo "virtualenv location"'
                             sh 'ls'
-
+                            sh 'echo "Installing dependenices"'
                             sh 'echo "Activating virtualenv"'
                             sh 'source venv/bin/activate'
 
@@ -29,7 +29,7 @@ pipeline {
                             
                             sh 'cat venv/bin/activate'
 
-                            sh 'echo "Installing dependenices"'
+                            
                             sh 'pip install -r requirements/common.txt'
                             
             }
