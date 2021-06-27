@@ -14,11 +14,11 @@ pipeline {
                 sh 'echo "Creating virtualenv"'
                             sh 'python3 -m venv venv'
 
-                            sh 'echo "Activating virtualenv"'
-                            sh '. venv/bin/activate'
-
                             sh 'echo "virtualenv location"'
                             sh 'pwd'
+
+                            sh 'echo "Activating virtualenv"'
+                            sh '. venv/bin/activate'
 
                             sh 'echo "Installing dependenices"'
                             sh 'pip install -r requirements/dev.txt'
