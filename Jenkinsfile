@@ -21,7 +21,7 @@ pipeline {
                 sh 'pwd'
 
                 sh 'echo "Installing dependenices"'
-                sh 'pip install -r requirements/dev.txt'
+                sh 'sudo -H pip install -r requirements/dev.txt'
             }
         }
         
