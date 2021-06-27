@@ -2,16 +2,6 @@ pipeline {
     agent any
     stages {
         stage('dependency') {
-            /* 
-            agent {
-                docker {
-                    image 'ubuntu:latest'
-                    // args '-e FLASK_CONFIG=testing -e TEST_DATABASE_URL=postgresql://ubuntu@localhost/circle_test?sslmode=disable -v $HOME:/'
-                    args "-v ${env.WORKSPACE}:/home/circleci/"
-                    reuseNode true
-                }
-            }
-            */
             steps {
                 sh 'echo "Test Dir"'
                 sh 'mkdir test-reports'                
@@ -30,13 +20,6 @@ pipeline {
                 script {
                     echo 'Testing....'
                     docker.image('circleci/postgres:9.6.5-alpine-ram').withRun('-e POSTGRES_USER=ubuntu -e POSTGRES_DB=circle_test -e POSTGRES_PASSWORD="" -p 5432:5432') { c ->
-                        /*docker.image('circleci/postgres:9.6.5-alpine-ram').inside("--link ${c.id}:db") {
-                            sh 'echo postgres db'
-                        }
-                        docker.image('circleci/python:3.6.2-stretch-browsers').inside('-v ${WORKSPACE}:/home/circleci -e FLASK_CONFIG=testing -e TEST_DATABASE_URL=postgresql://ubuntu@localhost/circle_test?sslmode=disable') {
-                            
-                        }
-                        */
                         sh 'while ! pg_isready -U ubuntu -h localhost -p 5432 -d circle_test -q; do sleep 1; done'
                         sh 'python3 manage.py test'
                     }
