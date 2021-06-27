@@ -6,9 +6,10 @@ pipeline {
                 script {
                     echo 'Testing....'
                     docker.image('circleci/postgres:9.6.5-alpine-ram').withRun('-e POSTGRES_USER=ubuntu -e POSTGRES_DB=circle_test -e POSTGRES_PASSWORD="" -p 5432:5432') { c ->
-                        docker.image('circleci/postgres:9.6.5-alpine-ram').inside('--link ${c.id}:db') {
+                        /*docker.image('circleci/postgres:9.6.5-alpine-ram').inside("--link ${c.id}:db") {
                             sh 'echo postgres db'
                         }
+                        */
                         docker.image('circleci/python:3.6.2-stretch-browsers').inside('--link ${c.id}:db') {
                             sh 'echo python'
                         }
@@ -16,7 +17,8 @@ pipeline {
                 }
             }
         }
-        stage('Upgrading pip, wheel and setuptools') {
+
+        stage('dependency') {
             agent {
                 docker {
                     image 'circleci/python:3.6.2-stretch-browsers'
