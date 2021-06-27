@@ -27,7 +27,7 @@ pipeline {
 
                             sh 'echo $PATH'
 
-                            sh 'echo "Installing dependenices"                       
+                            sh 'echo "Installing dependenices"'                      
                             sh 'pip install -r requirements/common.txt'
             }
         }
