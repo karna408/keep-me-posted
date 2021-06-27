@@ -12,6 +12,17 @@ pipeline {
             }
             steps {
                 sh 'echo "Creating virtualenv"'
+                            sh 'python3 -m venv venv'
+
+                            sh 'echo "Activating virtualenv"'
+                            sh '. venv/bin/activate'
+
+                            sh 'echo "virtualenv location"'
+                            sh 'pwd'
+
+                            sh 'echo "Installing dependenices"'
+                            sh 'pip install -r requirements/dev.txt'
+                            
             }
         }
         stage('build and test') {
@@ -23,18 +34,6 @@ pipeline {
                             sh 'echo postgres db'
                         }*/
                         docker.image('circleci/python:3.6.2-stretch-browsers').inside('-v ${WORKSPACE}:/home/circleci -e FLASK_CONFIG=testing -e TEST_DATABASE_URL=postgresql://ubuntu@localhost/circle_test?sslmode=disable') {
-                            sh 'echo "Creating virtualenv"'
-                            sh 'python3 -m venv venv'
-
-                            sh 'echo "Activating virtualenv"'
-                            sh 'source venv/bin/activate'
-
-                            sh 'echo "virtualenv location"'
-                            sh 'pwd'
-
-                            sh 'echo "Installing dependenices"'
-                            sh 'pip install -r requirements/dev.txt'
-                            
                             sh 'python manage.py test'
                         }
                     }
