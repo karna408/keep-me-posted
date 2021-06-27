@@ -26,7 +26,7 @@ pipeline {
                 sh 'echo "Activating virtualenv"'
 
                 sh 'cd venv'
-                sh 'source bin/activate'
+                sh '. bin/activate'
 
                 sh 'which pip'
 
