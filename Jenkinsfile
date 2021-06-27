@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('dependency') {
-        
+            /* 
             agent {
                 docker {
                     image 'ubuntu:latest'
@@ -11,7 +11,7 @@ pipeline {
                     reuseNode true
                 }
             }
-            
+            */
             steps {
                 sh 'echo "Test Dir"'
                 sh 'mkdir test-reports'
