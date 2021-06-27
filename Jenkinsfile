@@ -4,7 +4,7 @@ pipeline {
         stage('Upgrading pip, wheel and setuptools') {
             agent {
                 docker {
-                    image 'circleci/python:3.6.2-stretch-browsers'
+                    image 'python:3.7'
                     args '-v $HOME/:/root/'
                     reuseNode true
                 }
