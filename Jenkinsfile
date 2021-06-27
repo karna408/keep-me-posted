@@ -5,7 +5,7 @@ pipeline {
             agent {
                 docker {
                     image 'python:3.7'
-                    args '-v $HOME/:/root/'
+                    args '-v $HOME/:/root/ -u 0:0'
                     reuseNode true
                 }
             }
