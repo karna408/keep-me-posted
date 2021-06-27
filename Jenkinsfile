@@ -2,34 +2,38 @@ pipeline {
     agent any
     stages {
         stage('dependency') {
+        
             agent {
                 docker {
-                    image 'python:3.8-slim-buster'
+                    image 'ubuntu:latest'
                     // args '-e FLASK_CONFIG=testing -e TEST_DATABASE_URL=postgresql://ubuntu@localhost/circle_test?sslmode=disable -v $HOME:/'
                     args "-v ${env.WORKSPACE}:/home/circleci/"
                     reuseNode true
                 }
             }
+            
             steps {
                 sh 'echo "Test Dir"'
                 sh 'mkdir test-reports'
+                
+                sh ''
 
                 sh 'echo "Creating virtualenv"'
-                            sh 'python3 -m venv venv'
+                sh 'python3 -m venv venv'
 
-                            sh 'echo "virtualenv location"'
-                            sh 'ls'
-                            // sh 'cat venv/bin/activate'
-                            sh 'echo "Activating virtualenv"'
-                            sh 'cd venv'
-                            sh 'source bin/activate'
+                sh 'echo "virtualenv location"'
+                sh 'ls'
+                sh 'echo "Activating virtualenv"'
 
-                            sh 'which pip'
+                sh 'cd venv'
+                sh 'source bin/activate'
 
-                            sh 'echo $PATH'
+                sh 'which pip'
 
-                            sh 'echo "Installing dependenices"'                      
-                            sh 'pip install -r requirements/common.txt'
+                sh 'echo $PATH'
+
+                sh 'echo "Installing dependenices"'                      
+                sh 'pip install -r requirements/common.txt'
             }
         }
         stage('build and test') {
