@@ -16,7 +16,7 @@ pipeline {
                 sh 'echo "Test Dir"'
                 sh 'mkdir test-reports'
                 
-                sh 'apt update && apt install software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt update && apt install python3.8'
+                sh 'apt update && apt install software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt update && apt install -y python3.8'
 
                 sh 'echo "Creating virtualenv"'
                 sh 'python3 -m venv venv'
