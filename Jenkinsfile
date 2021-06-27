@@ -11,6 +11,9 @@ pipeline {
                 }
             }
             steps {
+                sh 'echo "Test Dir"'
+                sh 'mkdir test-reports'
+                
                 sh 'echo "Creating virtualenv"'
                             sh 'python3 -m venv venv'
 
