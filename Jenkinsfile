@@ -21,7 +21,8 @@ pipeline {
                             sh 'ls'
                             // sh 'cat venv/bin/activate'
                             sh 'echo "Activating virtualenv"'
-                            sh '. venv/bin/activate'
+                            sh 'cd venv'
+                            sh 'source bin/activate'
 
                             sh 'which pip'
 
