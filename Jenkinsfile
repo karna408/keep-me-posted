@@ -21,7 +21,7 @@ pipeline {
                             sh '. venv/bin/activate'
 
                             sh 'echo "Installing dependenices"'
-                            sh 'pip install -r requirements/dev.txt'
+                            sh 'pip install -r requirements/common.txt'
                             
             }
         }
