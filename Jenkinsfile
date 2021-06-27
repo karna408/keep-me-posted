@@ -1,11 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'circleci/python:3.6.2-stretch-browsers'
-            args '-e FLASK_CONFIG=testing -e TEST_DATABASE_URL=postgresql://ubuntu@localhost/circle_test?sslmode=disable'
-            reuseNode true
-        }
-    }
+    agent any
     stages {
         stage('Testing') {
             steps {
@@ -18,6 +12,13 @@ pipeline {
             }
         }
         stage('Upgrading pip, wheel and setuptools') {
+            agent {
+                docker {
+                    image 'circleci/python:3.6.2-stretch-browsers'
+                    args '-e FLASK_CONFIG=testing -e TEST_DATABASE_URL=postgresql://ubuntu@localhost/circle_test?sslmode=disable'
+                    reuseNode true
+                }
+            }
             steps {
                 sh 'echo "where an i"'
                 sh 'cat /etc/passwd'
