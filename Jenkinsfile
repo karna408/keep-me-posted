@@ -21,12 +21,8 @@ pipeline {
                 sh 'echo "Creating virtualenv"'
                 sh 'python3 -m venv venv'
 
-                sh 'echo "virtualenv location"'
-                sh 'ls'
                 sh 'echo "Activating virtualenv"'
-
-                sh 'cd venv'
-                sh '. bin/activate'
+                sh '. venv/bin/activate'
 
                 sh 'which pip'
 
