@@ -37,6 +37,7 @@ pipeline {
                             
                         }
                         */
+                        sh 'while ! pg_isready -U ubuntu -h db -q; do sleep 1; done'
                         sh 'python3 manage.py test'
                     }
                 }
