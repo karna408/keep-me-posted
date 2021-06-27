@@ -15,7 +15,7 @@ pipeline {
                             sh 'python3 -m venv venv'
 
                             sh 'echo "virtualenv location"'
-                            sh 'pwd'
+                            sh 'ls'
 
                             sh 'echo "Activating virtualenv"'
                             sh '. venv/bin/activate'
