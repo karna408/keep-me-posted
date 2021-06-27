@@ -5,7 +5,7 @@ pipeline {
             agent {
                 docker {
                     image 'circleci/python:3.6.2-stretch-browsers'
-                    args '-u 0:0'
+                    args ''
                     reuseNode true
                 }
             }
