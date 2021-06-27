@@ -22,4 +22,4 @@ blinker==1.4
 html5lib==1.0b10
 itsdangerous==0.24
 six==1.10.0
-psycopg2-binary==2.9.1
+psycopg2==2.9.1
