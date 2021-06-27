@@ -19,20 +19,16 @@ pipeline {
 
                             sh 'echo "virtualenv location"'
                             sh 'ls'
-                            sh 'cat venv/bin/activate'
-                            sh 'echo "Installing dependenices"'
+                            // sh 'cat venv/bin/activate'
                             sh 'echo "Activating virtualenv"'
-                            sh 'source venv/bin/activate'
+                            sh '. venv/bin/activate'
 
                             sh 'which pip'
 
                             sh 'echo $PATH'
-                            
-                            
 
-                            
+                            sh 'echo "Installing dependenices"                       
                             sh 'pip install -r requirements/common.txt'
-                            
             }
         }
         stage('build and test') {
