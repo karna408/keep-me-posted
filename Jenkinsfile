@@ -24,6 +24,7 @@ pipeline {
                 sh 'echo "Activating virtualenv"'
                 sh '. venv/bin/activate'
 */
+                sh  'apt install -y python3-pip'
                 sh 'echo "Installing dependenices"'                      
                 sh 'pip install -r requirements/common.txt'
             }
