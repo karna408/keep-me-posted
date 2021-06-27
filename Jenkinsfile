@@ -5,11 +5,14 @@ pipeline {
             agent {
                 docker {
                     image 'circleci/python:3.6.2-stretch-browsers'
-                    args ''
+                    args '-v $HOME:/home/circleci -u circleci:circleci'
                     reuseNode true
                 }
             }
             steps {
+                sh 'echo "where an i"'
+                sh 'cat /etc/passwd'
+
                 sh 'echo "Creating virtualenv"'
                 sh 'python3 -m venv venv'
 
