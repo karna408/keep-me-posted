@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'echo "Test Dir"'
                 sh 'mkdir test-reports'
-                
+
                 sh 'echo "Creating virtualenv"'
                             sh 'python3 -m venv venv'
 
@@ -22,6 +22,8 @@ pipeline {
 
                             sh 'echo "Activating virtualenv"'
                             sh '. venv/bin/activate'
+
+                            sh 'which pip'
 
                             sh 'echo "Installing dependenices"'
                             sh 'pip install -r requirements/common.txt'
