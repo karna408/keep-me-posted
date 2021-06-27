@@ -4,7 +4,7 @@ pipeline {
         stage('dependency') {
             agent {
                 docker {
-                    image 'circleci/python:3.6.2-stretch-browsers'
+                    image 'python:3.8-slim-buster'
                     // args '-e FLASK_CONFIG=testing -e TEST_DATABASE_URL=postgresql://ubuntu@localhost/circle_test?sslmode=disable -v $HOME:/'
                     args "-v ${env.WORKSPACE}:/home/circleci/"
                     reuseNode true
