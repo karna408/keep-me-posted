@@ -6,7 +6,7 @@ pipeline {
                 docker {
                     image 'circleci/python:3.6.2-stretch-browsers'
                     // args '-e FLASK_CONFIG=testing -e TEST_DATABASE_URL=postgresql://ubuntu@localhost/circle_test?sslmode=disable -v $HOME:/'
-                    args '-v $HOME/workspace:/home/circleci/'
+                    args '-v ${env.WORKSPACE}:/home/circleci/'
                     reuseNode true
                 }
             }
@@ -22,7 +22,7 @@ pipeline {
                         /*docker.image('circleci/postgres:9.6.5-alpine-ram').inside("--link ${c.id}:db") {
                             sh 'echo postgres db'
                         }*/
-                        docker.image('circleci/python:3.6.2-stretch-browsers').inside('-v $HOME/workspace:/home/circleci -e FLASK_CONFIG=testing -e TEST_DATABASE_URL=postgresql://ubuntu@localhost/circle_test?sslmode=disable') {
+                        docker.image('circleci/python:3.6.2-stretch-browsers').inside('-v ${WORKSPACE}:/home/circleci -e FLASK_CONFIG=testing -e TEST_DATABASE_URL=postgresql://ubuntu@localhost/circle_test?sslmode=disable') {
                             sh 'echo "Creating virtualenv"'
                             sh 'python3 -m venv venv'
 
