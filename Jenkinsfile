@@ -26,7 +26,7 @@ pipeline {
 */
                 sh  'apt install -y python3-pip'
                 sh 'echo "Installing dependenices"'                      
-                sh 'pip3 install -r requirements/common.txt'
+                sh 'pip3 install -r requirements/dev.txt'
             }
         }
         stage('build and test') {
