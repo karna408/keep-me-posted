@@ -23,6 +23,10 @@ pipeline {
         }
         stage('build and test') {
             steps {
+                environment {
+                    FLASK_CONFIG = 'testing'
+                    TEST_DATABASE_URL = 'postgresql://ubuntu@localhost/circle_test?sslmode=disable'
+                }
                 script {
                     echo 'Testing....'
                     docker.image('circleci/postgres:9.6.5-alpine-ram').withRun('-e POSTGRES_USER=ubuntu -e POSTGRES_DB=circle_test -e POSTGRES_PASSWORD="" -p 5432:5432') { c ->
