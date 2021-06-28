@@ -1,0 +1,9 @@
+tests/
+.circlci/
+.vscode/
+.dockerignore
+.gitignore
+azure-pipelines.yml
+Dockerfile
+Jenkinsfile
+notes.txt

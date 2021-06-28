@@ -13,9 +13,9 @@ pipeline {
         }
         stage('build and test') {
             environment {
-                    FLASK_CONFIG='testing'
-                    TEST_DATABASE_URL='postgresql://ubuntu@localhost/circle_test?sslmode=disable'
-                }
+                FLASK_CONFIG='testing'
+                TEST_DATABASE_URL='postgresql://ubuntu@localhost/circle_test?sslmode=disable'
+            }
             steps {
                 script {
                     echo 'Testing....'
@@ -25,6 +25,9 @@ pipeline {
                     }
                 }
             }
+        }
+        stage('dockerizing') {
+            sh 'docker build -t t-app .'
         }
     }
 }
