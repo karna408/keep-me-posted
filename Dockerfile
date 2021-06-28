@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.6
 
 RUN python -m pip install --upgrade pip setuptools wheel
 RUN mkdir -p /var/t-app
