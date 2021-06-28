@@ -1,6 +1,6 @@
 #!/bin/sh
 
 . /var/t-app/venv/bin/activate
-
-python /var/t-app/manage.py deploy
-python /var/t-app/manage.py runserver
+cd /var/t-app/
+python manage.py deploy
+python manage.py runserver
