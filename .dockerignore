@@ -7,3 +7,6 @@ azure-pipelines.yml
 Dockerfile
 Jenkinsfile
 notes.txt
+__pycache__
+venv
+.env
