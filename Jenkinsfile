@@ -27,7 +27,9 @@ pipeline {
             }
         }
         stage('dockerizing') {
-            sh 'docker build -t t-app .'
+            steps{
+                sh 'docker build -t t-app .'
+            }
         }
     }
 }
