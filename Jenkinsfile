@@ -1,6 +1,13 @@
 pipeline {
     agent any
     stages {
+          stage('Static Code Analysis'){
+            steps{
+                withSonarQubeEnv('Sonar'){
+                    sh "sonar-scanner -Dsonar.projectKey=t-app  -Dsonar.sources=."
+                }
+            }
+        }
         stage('dependency') {
             steps {
                 sh 'echo "Test Dir"'
