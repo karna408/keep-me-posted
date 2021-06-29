@@ -21,7 +21,7 @@ pipeline {
                     echo 'Testing....'
                     docker.image('circleci/postgres:9.6.5-alpine-ram').withRun('-e POSTGRES_USER=ubuntu -e POSTGRES_DB=circle_test -e POSTGRES_PASSWORD="" -p 5432:5432') { c ->
                         sh 'while ! pg_isready -U ubuntu -h localhost -p 5432 -d circle_test -q; do sleep 1; done'
-                        sh 'python3.6 manage.py test'
+                        sh 'python manage.py test'
                     }
                 }
             }
