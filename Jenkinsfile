@@ -28,7 +28,7 @@ pipeline {
         }
         stage('dockerizing') {
             steps{
-                sh 'docker build -t t-app .'
+                sh 'sudo docker build -t t-app .'
             }
         }
         stage('cleanup'){
