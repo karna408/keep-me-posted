@@ -5,8 +5,8 @@ pipeline {
             steps {
                 sh 'echo "Test Dir"'
                 sh 'mkdir test-reports'             
-                sh 'apt update && apt install software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt update && apt install -y python3.8'
-                sh 'apt install -y python3-pip libpq-dev postgresql-client-common postgresql-client-10'
+                sh 'sudo apt update && sudo apt install software-properties-common && sudo add-apt-repository ppa:deadsnakes/ppa && sudo apt update && sudo apt install -y python3.8'
+                sh 'sudo apt install -y python3-pip libpq-dev postgresql-client-common postgresql-client-10'
                 sh 'echo "Installing dependenices"'                      
                 sh 'pip3 install -r requirements/dev.txt'
             }
