@@ -38,12 +38,6 @@ pipeline {
                 sh 'sudo docker build -t t-app .'
             }
         }
-        stage('cleanup'){
-            steps {
-                cleanWs()
-            
-            }
         
-        }
     }
 }
