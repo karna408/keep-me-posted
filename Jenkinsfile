@@ -31,7 +31,13 @@ pipeline {
                         sh 'python manage.py test'
                     }
                 }
+                post {
+                    always {
+                        junit allowEmptyResults: true, testResults: 'test-reports/*.xml' 
+                    }
+                }
             }
+            
         }
         stage('dockerizing') {
             steps{
