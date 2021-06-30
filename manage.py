@@ -60,6 +60,7 @@ def profile(length=25, profile_dir=None):
     from werkzeug.contrib.profiler import ProfilerMiddleware
     app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[length],
                                       profile_dir=profile_dir)
+    print('running app')
     app.run()
 
 

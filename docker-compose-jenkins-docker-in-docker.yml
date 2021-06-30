@@ -1,0 +1,45 @@
+---
+version: "3.8"
+
+volumes:
+    data:
+        name: jenkins-data
+    certs:
+        name: jenkins-docker-certs
+
+networks:
+    jenkins-network:
+        name: jenkins
+
+services:
+    socat:
+        container_name: jenkins-docker
+        image: alpine/socat
+        privileged: true
+        restart: unless-stopped
+        networks:
+            jenkins-network:
+                aliases:
+                    - docker
+        expose:
+            - "2375"
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - data:/var/jenkins_home
+        command: 'tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock'
+        environment:
+            - DOCKER_TLS_CERTDIR=/certs
+
+    jenkins:
+        container_name: jenkins-blueocean
+        image: jenkinsci/blueocean
+        restart: unless-stopped
+        networks:
+            - jenkins-network
+        ports:
+            - 8080:8080
+            - 50000:50000
+        volumes:
+            - data:/var/jenkins_home
+        environment:
+            - DOCKER_HOST=tcp://docker:2375

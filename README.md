@@ -14,6 +14,7 @@ The application uses Python and Flask for the backend.
 
 ```
 Create database in Postgresql with name circulate
+Run databse as docker container: `sudo docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=circulate  -p 5432:5432 -d postgres`
 python -m pip install --upgrade pip setuptools wheel
 pip install -r requirements/dev.txt
 python manage.py deploy
