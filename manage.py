@@ -60,7 +60,8 @@ def profile(length=25, profile_dir=None):
     from werkzeug.contrib.profiler import ProfilerMiddleware
     app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[length],
                                       profile_dir=profile_dir)
-    app.run()
+    print('running app')
+    app.run(host="10.0.0.0", port = 6000)
 
 
 @manager.command

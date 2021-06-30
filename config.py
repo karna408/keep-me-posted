@@ -16,8 +16,8 @@ class Config:
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') or 'mailhog'
     CIRCULATE_MAIL_SUBJECT_PREFIX = '[Circulate]'
     CIRCULATE_MAIL_SENDER = os.environ.get('CIRCULATE_MAIL_SENDER') or \
-        'Circulate Admin <circulate@example.com>'
-    CIRCULATE_ADMIN = os.environ.get('CIRCULATE_ADMIN') or 'circulate@example.com'
+        'Circulate Admin <t-app@example.com>'
+    CIRCULATE_ADMIN = os.environ.get('CIRCULATE_ADMIN') or 't-app@example.com'
     CIRCULATE_POSTS_PER_PAGE = 20
     CIRCULATE_FOLLOWERS_PER_PAGE = 50
     CIRCULATE_COMMENTS_PER_PAGE = 30
