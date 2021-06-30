@@ -7,3 +7,4 @@ httpie==1.0.3
 requests==2.21.0
 selenium==3.5.0
 unittest-xml-reporting==2.1.0
+gunicorn==19.7.1
