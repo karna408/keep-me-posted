@@ -18,6 +18,17 @@ services:
         POSTGRES_PASSWORD: ""
 
 steps:
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'T-app-connection'
+    organization: 'karnareddychanda0865org'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'KarnaReddyChanda0865_T-app'
+    cliSources: '.'
+    
+- task: SonarCloudAnalyze@1
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '$(PYTHON_VERSION)'
